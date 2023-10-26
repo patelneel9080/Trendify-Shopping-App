@@ -176,7 +176,7 @@ class _FirstPageState extends State<FirstPage> {
                   ],
                 ),
                 const Divider(
-                  color: Colors.black45,
+                  color: Colors.black,
                 ),
                 const SizedBox(
                   height: 8,

@@ -1,9 +1,15 @@
 import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:neel_test/Images/app_images.dart';
+import 'package:neel_test/config/app_constant.dart';
 import 'package:neel_test/firstpage.dart';
+import 'package:neel_test/homepage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'signup_screen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -17,6 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _passwordController = TextEditingController();
   String _errorMessage = '';
   String data = "";
+  bool isCheck = false;
 
   Future<String> inputData() async {
     return Future.delayed(
@@ -55,25 +62,36 @@ class _LoginPageState extends State<LoginPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ClipOval(child: Container(
-                    height: 60,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.black54,
-                      image: DecorationImage(image: NetworkImage(HomePageImg.iconimg),fit: BoxFit.cover)
+                  ClipOval(
+                    child: Container(
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                          color: Colors.black54,
+                          image: DecorationImage(
+                              image: NetworkImage(HomePageImg.iconimg),
+                              fit: BoxFit.cover)),
                     ),
-                  ),),
-                  SizedBox(width: 8,),
-                  Text("Shoppify",style: GoogleFonts.imFellFrenchCanon(color: Colors.black,fontSize: 24),)
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    "Shoppify",
+                    style: GoogleFonts.imFellFrenchCanon(
+                        color: Colors.black, fontSize: 24),
+                  )
                 ],
               ),
             ),
-            SizedBox(height: 100,),
+            SizedBox(
+              height: 100,
+            ),
             ClipRect(
                 child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
               child: Container(
-                height: 350,
+                height: 370,
                 width: 300,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
@@ -88,8 +106,10 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       Text(
                         "LOGIN",
-                        style: GoogleFonts.roboto(color: Colors.black54,
-                            fontSize: 26, fontWeight: FontWeight.w700),
+                        style: GoogleFonts.roboto(
+                            color: Colors.black54,
+                            fontSize: 26,
+                            fontWeight: FontWeight.w700),
                       ),
                       const SizedBox(
                         height: 18,
@@ -99,17 +119,21 @@ class _LoginPageState extends State<LoginPage> {
                         cursorColor: Colors.black54,
                         controller: _usernameController,
                         style: const TextStyle(fontWeight: FontWeight.w400),
-                        decoration:  InputDecoration(
+                        decoration: InputDecoration(
                             labelText: "Username",
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black54.withOpacity(0.7)),
+                              borderSide: BorderSide(
+                                  color: Colors.black54.withOpacity(0.7)),
                             ),
-                            labelStyle: const TextStyle(color: Colors.white54,fontWeight: FontWeight.bold),
+                            labelStyle: const TextStyle(
+                                color: Colors.white54,
+                                fontWeight: FontWeight.bold),
                             hintText: 'Type your username',
                             focusedBorder: const UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black54),
                             ),
-                            hintStyle: const TextStyle(fontSize: 16,color: Colors.black54),
+                            hintStyle: const TextStyle(
+                                fontSize: 16, color: Colors.black54),
                             contentPadding: const EdgeInsets.symmetric(
                                 vertical: 15.0, horizontal: 10.0),
                             prefixIcon: const Icon(
@@ -117,7 +141,6 @@ class _LoginPageState extends State<LoginPage> {
                               color: Colors.white54,
                               size: 26,
                             )),
-
                       ),
                       const SizedBox(
                         height: 20,
@@ -132,19 +155,23 @@ class _LoginPageState extends State<LoginPage> {
                         cursorColor: Colors.black,
                         autocorrect: true,
                         obscureText: true,
-                        decoration:  InputDecoration(
+                        decoration: InputDecoration(
                           labelText: "Password",
-                          labelStyle: const TextStyle(color: Colors.white54,fontWeight: FontWeight.bold),
+                          labelStyle: const TextStyle(
+                              color: Colors.white54,
+                              fontWeight: FontWeight.bold),
                           enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black54.withOpacity(0.7)),
+                            borderSide: BorderSide(
+                                color: Colors.black54.withOpacity(0.7)),
                           ),
                           focusedBorder: const UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black54),
                           ),
                           hintText: 'Type your password',
-                          hintStyle: const TextStyle(fontSize: 16,color: Colors.black54),
-                          prefixIcon:
-                              const Icon(Icons.lock, color: Colors.white54, size: 26),
+                          hintStyle: const TextStyle(
+                              fontSize: 16, color: Colors.black54),
+                          prefixIcon: const Icon(Icons.lock,
+                              color: Colors.white54, size: 26),
                         ),
                       ),
                       if (_errorMessage.isNotEmpty)
@@ -169,53 +196,91 @@ class _LoginPageState extends State<LoginPage> {
                                   RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(24)))),
-                          onPressed: () {
-                            String username = _usernameController.text;
-                            String password = _passwordController.text;
-
+                          onPressed: () async {
+                            SharedPreferences pref= await SharedPreferences.getInstance();
                             // Here you can add your logical part for authentication
-                            if (username.isEmpty && password.isEmpty) {
+                            if (_usernameController.text.isEmpty &&
+                                _passwordController.text.isEmpty) {
                               setState(() {
                                 _errorMessage =
                                     'Please enter both username and password.';
                               });
-                            } else if (username.isEmpty) {
+                            } else if (_usernameController.text.isEmpty) {
                               setState(() {
                                 _errorMessage = "Please enter username";
                               });
-                            } else if (password.isEmpty) {
+                            } else if (_passwordController.text.isEmpty) {
                               setState(() {
                                 _errorMessage = "Please enter password";
                               });
                             } else {
-                              if (username == 'admin' &&
-                                  password == 'admin123') {
-                                // Navigate to the home page
+                              _errorMessage = "";
+                              isCheck = true;
+                              setState(() {});
+                              Future.delayed(const Duration(seconds: 3), ()  {
+                                if (userName == _usernameController.text &&
+                                    userPassword == _passwordController.text) {
+                                  isCheck = false;
+                                pref.setBool("isLogin",true);
+                                isLogin=pref.getBool("isLogin")!;
+                                print("isLogin:$isLogin");
+                                  setState(() {});
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HomePageVIew(),
+                                      ));
+                                } else if (userName !=
+                                    _usernameController.text) {
+                                  setState(() {
+                                    isCheck = false;
+                                    setState(() {});
+                                    _errorMessage = "Invalid username";
+                                  });
+                                } else if (userPassword !=
+                                    _passwordController.text) {
+                                  setState(() {
+                                    isCheck = false;
+                                    setState(() {});
+                                    _errorMessage = "Invalid password";
+                                  });
+                                }
+                              });
+                            }
+                          },
+                          child: (!isCheck)
+                              ? const Text("Login")
+                              : const SizedBox(
+                                  height: 30,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                )),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          Text("Do you haven't account?"),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          TextButton(
+                              onPressed: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                      const FirstPage(),
-                                    ));
-                              }
-                              else if (username != "admin") {
-                                setState(() {
-                                  _errorMessage = "Invalid username";
-                                });
-                              } else if (password != "admin123") {
-                                setState(() {
-                                  _errorMessage = "Invalid password";
-                                });
-                              } else if (username != 'admin' &&
-                                  password != 'admin123') {
-                                setState(() {
-                                  _errorMessage =
-                                      'Invalid username or password. Please try again.';
-                                });
-                              }
-                            }
-                          },
-                          child: const Text("Login"))
+                                        builder: (context) => SignupPage()));
+                              },
+                              child: Text(
+                                "Signup",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              )),
+                        ],
+                      )
                     ],
                   ),
                 ),

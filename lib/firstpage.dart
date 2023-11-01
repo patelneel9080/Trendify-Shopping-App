@@ -15,26 +15,26 @@ class _FirstPageState extends State<FirstPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.deepPurpleAccent,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.deepPurpleAccent,
         title: const Text(
           "Detail Profuct",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
         ),
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: 8),
             child: Icon(
               Icons.shopping_cart,
-              color: Colors.black,
+              color: Colors.white,
             ),
           ),
         ],
         leading: const Icon(
           Icons.arrow_back_outlined,
-          color: Colors.black,
+          color: Colors.white,
         ),
         centerTitle: true,
       ),
@@ -67,12 +67,12 @@ class _FirstPageState extends State<FirstPage> {
                           Text(
                             "Airpods max by Apple",
                             style:
-                                TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+                                TextStyle(fontWeight: FontWeight.w500,color: Colors.white, fontSize: 20),
                           ),
                           Text(
                             "\$ 1999,99 ( 219 people buy this )",
                             style:
-                                TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+                                TextStyle(fontWeight: FontWeight.w500,color: Colors.white, fontSize: 20),
                           )
                         ],
                       ),
@@ -153,12 +153,12 @@ class _FirstPageState extends State<FirstPage> {
                               Text(
                                 "Apple Store",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 18),
+                                    fontWeight: FontWeight.w700,color:Colors.white, fontSize: 18),
                               ),
                               Text(
                                 "online 12m ago",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w500, fontSize: 12),
+                                    fontWeight: FontWeight.w500,color:Color(0xffC7C7C7), fontSize: 12),
                               )
                             ],
                           ),
@@ -187,7 +187,7 @@ class _FirstPageState extends State<FirstPage> {
                       Text(
                         "Description of product",
                         style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontSize: 18,
                             fontWeight: FontWeight.w400),
                       ),
@@ -197,7 +197,7 @@ class _FirstPageState extends State<FirstPage> {
                       Text(
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                         style: TextStyle(
-                            color: Colors.black54,
+                            color: Colors.white54,
                             fontSize: 14,
                             fontWeight: FontWeight.w400),
                         maxLines: 5,

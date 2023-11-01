@@ -4,7 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:neel_test/Images/app_images.dart';
 import 'package:neel_test/config/app_constant.dart';
 import 'package:neel_test/firstpage.dart';
+import 'package:neel_test/login_module/loginpage.dart';
 import 'package:neel_test/modelview.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'onboardingscreen.dart';
 
 class Home_Page extends StatefulWidget {
@@ -30,7 +32,6 @@ class _Home_PageState extends State<Home_Page> {
       appBar: AppBar(
         backgroundColor: Colors.deepPurpleAccent,
         elevation: 0,
-        title: Text("Hi $userName"),
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
@@ -60,7 +61,20 @@ class _Home_PageState extends State<Home_Page> {
           )
         ],
       ),
-      drawer: const Drawer(),
+      drawer:  Drawer(
+        child: Column(
+          children: [
+            SizedBox(height: 200,),
+            ElevatedButton(onPressed: ()async {
+              SharedPreferences pref=await SharedPreferences.getInstance();
+              pref.setBool("isLogin",false);
+              isLogin=pref.getBool("isLogin")!;
+              print("isLogin:$isLogin");
+              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage(),));
+            }, child: Text("LogOut",style: GoogleFonts.adamina(),)),
+          ],
+        ),
+      ),
       backgroundColor: Colors.deepPurpleAccent,
       body: Container(
         height: size.height,

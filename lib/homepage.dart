@@ -1,4 +1,5 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:neel_test/Images/app_images.dart';
@@ -6,6 +7,9 @@ import 'package:neel_test/firstpage.dart';
 import 'package:neel_test/home_page.dart';
 import 'package:neel_test/login_module/loginpage.dart';
 import 'package:neel_test/modelview.dart';
+import 'package:neel_test/profilepage.dart';
+
+import 'searchpage.dart';
 
 class HomePageVIew extends StatefulWidget {
   const HomePageVIew({super.key});
@@ -16,19 +20,18 @@ class HomePageVIew extends StatefulWidget {
 
 class _HomePageVIewState extends State<HomePageVIew> {
   int _activeindex = 0;
-  double _containerheight = 330;
-  double _containerweidth = 360;
 
   List<IconData> iconlist = [
     Icons.home,
     Icons.search,
     Icons.data_saver_off_outlined,
-
+    CupertinoIcons.profile_circled,
   ];
   final List<Widget> _pages = [
     Home_Page(),
-    FirstPage(),
+    SearchPage(),
     LoginPage(),
+    ProfilePage(),
   ];
 
   IconData navtoSreen(int index) {

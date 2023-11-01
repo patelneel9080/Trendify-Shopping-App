@@ -23,12 +23,19 @@ class IconImages {
 }
 
 class HomePageImg {
+  static const profilebkgimg = "https://img.freepik.com/free-vector/gradient-geometrical-shapes-dark-background_23-2148423541.jpg";
+  static const profilebkgimg2 = "https://img.freepik.com/free-vector/gradient-blue-background_23-2149336903.jpg";
+  static const profileimg = "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg";
   static const hdphone =
-     "https://image.similarpng.com/very-thumbnail/2021/07/Black-headphone-isolated-on-transparent-background-PNG.png";
+      "https://image.similarpng.com/very-thumbnail/2021/07/Black-headphone-isolated-on-transparent-background-PNG.png";
   static const bkgimage =
       "https://i.pinimg.com/736x/ed/5d/fb/ed5dfb8f4ddb37afb0eacb3e902a279d.jpg";
   static const bkgimage2 =
       "https://i.pinimg.com/736x/d9/f8/d0/d9f8d0e112611016ee89c8c925e83bcf.jpg";
   static const iconimg =
       "https://static.vecteezy.com/system/resources/thumbnails/011/401/535/small/online-shopping-trolley-click-and-collect-order-logo-design-template-vector.jpg";
+}
+
+class BackgroudImg {
+  static const wlcmimg = "https://us.123rf.com/450wm/jemastock/jemastock2001/jemastock200146717/138549833-avatar-man-and-woman-with-supermarket-basket-and-bag-icon-over-white-background-colorful-design.jpg?ver=6";
 }

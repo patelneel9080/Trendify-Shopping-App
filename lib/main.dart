@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:neel_test/login_module/splash_screen.dart';
+import 'package:neel_test/login_module/welcomepage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'config/app_constant.dart';
 import 'firstpage.dart';
 import 'homepage.dart';
 import 'login_module/loginpage.dart';
-import 'testone.dart';
+
 
 Future<void> main()async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const MaterialApp(
       debugShowCheckedModeBanner: false,
-        home: SplashScreen()
+        home: WelcomePage()
     );
   }
 }

@@ -32,9 +32,14 @@ class _FirstPageState extends State<FirstPage> {
             ),
           ),
         ],
-        leading: const Icon(
-          Icons.arrow_back_outlined,
-          color: Colors.white,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back_outlined,
+            color: Colors.white,
+          ),
         ),
         centerTitle: true,
       ),

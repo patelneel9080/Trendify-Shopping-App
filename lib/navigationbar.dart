@@ -1,14 +1,9 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:neel_test/Images/app_images.dart';
-import 'package:neel_test/firstpage.dart';
 import 'package:neel_test/home_page.dart';
 import 'package:neel_test/login_module/loginpage.dart';
-import 'package:neel_test/modelview.dart';
 import 'package:neel_test/profilepage.dart';
-
 import 'searchpage.dart';
 
 class HomePageVIew extends StatefulWidget {

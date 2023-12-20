@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:neel_test/login_module/splash_screen.dart';
 import 'package:neel_test/login_module/welcomepage.dart';
+import 'package:neel_test/searchpage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'config/app_constant.dart';
 import 'firstpage.dart';
-import 'homepage.dart';
+import 'navigationbar.dart';
 import 'login_module/loginpage.dart';
 
 
 Future<void> main()async{
-  WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences pref=await SharedPreferences.getInstance();
+  WidgetsFlutterBinding.ensureInitialized();  SharedPreferences pref=await SharedPreferences.getInstance();
   userName=pref.getString("userName") ?? "";
   userPassword=pref.getString("password") ?? "";
   isLogin=pref.getBool("isLogin") ?? false;
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const MaterialApp(
       debugShowCheckedModeBanner: false,
-        home: WelcomePage()
+        home: WelcomePage(),
     );
   }
 }

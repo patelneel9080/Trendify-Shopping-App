@@ -6,7 +6,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:neel_test/Images/app_images.dart';
 import 'package:neel_test/config/app_constant.dart';
 import 'package:neel_test/firstpage.dart';
-import 'package:neel_test/homepage.dart';
+import 'package:neel_test/navigationbar.dart';
+import 'package:neel_test/login_module/loginpage.dart';
+import 'package:neel_test/login_module/welcomepage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SignupPage extends StatefulWidget {
@@ -106,7 +108,7 @@ class _SignupPageState extends State<SignupPage> {
                               height: 18,
                             ),
                             Text(
-                              "Signup",
+                              "SIGNUP",
                               style: GoogleFonts.roboto(
                                   color: Colors.black54,
                                   fontSize: 26,
@@ -199,6 +201,7 @@ class _SignupPageState extends State<SignupPage> {
                                             BorderRadius.circular(24)))),
                                 onPressed: () async {
                                   // Here you can add your logical part for authentication
+
                                   if (_usernameController.text.isEmpty &&
                                       _passwordController.text.isEmpty) {
                                     setState(() {
@@ -214,37 +217,48 @@ class _SignupPageState extends State<SignupPage> {
                                       _errorMessage = "Please enter password";
                                     });
                                   } else {
-                                    SharedPreferences pref=await SharedPreferences.getInstance();
-                                    pref.setString("userName", _usernameController.text);
-                                    pref.setString("password", _passwordController.text);
-                                    userName=pref.getString("userName")!;
-                                    userPassword=pref.getString("password")!;
-                                    print("userName:$userName");
-                                    print("userPassword:$userPassword");
-                                    Navigator.pop(context);
+                                    isCheck = true;
+                                    setState(() {});
+                                    Future.delayed(Duration(seconds: 3),() async {
+                                      SharedPreferences pref =
+                                      await SharedPreferences.getInstance();
+                                      pref.setString(
+                                          "userName", _usernameController.text);
+                                      pref.setString(
+                                          "password", _passwordController.text);
+                                      userName = pref.getString("userName")!;
+                                      userPassword = pref.getString("password")!;
+                                      print("userName:$userName");
+                                      print("userPassword:$userPassword");
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomePage(),));
+                                    },);
                                   }
+
                                 },
                                 child: (!isCheck)
-                                    ? const Text("Signup")
+                                    ? const Text("Sign up")
                                     : const SizedBox(
-                                  height: 30,
+                                  height: 20,
+                                  width: 20,
                                   child: CircularProgressIndicator(
                                     color: Colors.white,
                                   ),
                                 )),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 24),
                               child: Row(
                                 children: [
-                                  Text("Do you have an account?"),
+                                  const Text("Do you have an account?"),
                                   TextButton(
                                       onPressed: () {
-                                        Navigator.pop(context);
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage(),));
+                                        setState(() {});
+                                        // Navigator.pop(context);
                                       },
-                                      child: Text(
+                                      child: const Text(
                                         "Login",
                                         style: TextStyle(
                                             color: Colors.blueAccent,

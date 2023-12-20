@@ -34,7 +34,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 width: size.width / 1.1,
                 decoration: BoxDecoration(
                     color: Colors.black,
-                    image: DecorationImage(image: NetworkImage(HomePageImg.profilebkgimg),fit: BoxFit.cover,opacity: .65),
+                    image: const DecorationImage(image: NetworkImage(HomePageImg.profilebkgimg),fit: BoxFit.cover,opacity: .65),
                     borderRadius: BorderRadius.circular(32)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -76,7 +76,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 width: size.width / 1.1,
                 decoration: BoxDecoration(
                     color: Colors.black,
-                    image: DecorationImage(image: NetworkImage(HomePageImg.profilebkgimg2),fit: BoxFit.cover,opacity: .84),
+                    image: const DecorationImage(image: NetworkImage(HomePageImg.profilebkgimg2),fit: BoxFit.cover,opacity: .84),
                     borderRadius: BorderRadius.circular(32)),
                 child: Padding(
                   padding: const EdgeInsets.all(26.0),
@@ -122,7 +122,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             "Credits & Coupons",
                             style: TextStyle(fontSize: 18, color: Colors.white),
                           ),
-                          SizedBox(width: size.width / 3.04),
+                          SizedBox(width: size.width / 3.1),
                           const Icon(
                             Icons.add_card,
                             color: Colors.white,
@@ -138,7 +138,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             "Invite Friends",
                             style: TextStyle(fontSize: 18, color: Colors.white),
                           ),
-                          SizedBox(width: size.width / 2.27),
+                          SizedBox(width: size.width / 2.3),
                           const Icon(
                             Icons.person_add_alt_1,
                             color: Colors.white,
@@ -154,7 +154,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             "Shipping Address",
                             style: TextStyle(fontSize: 18, color: Colors.white),
                           ),
-                          SizedBox(width: size.width / 2.86),
+                          SizedBox(width: size.width / 2.96),
                           const Icon(
                             Icons.location_on_outlined,
                             color: Colors.white,
@@ -170,7 +170,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             "Account Settings",
                             style: TextStyle(fontSize: 18, color: Colors.white),
                           ),
-                          SizedBox(width: size.width / 2.76),
+                          SizedBox(width: size.width / 2.86),
                           const Icon(
                             Icons.settings,
                             color: Colors.white,
@@ -197,7 +197,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => LoginPage(),
+                                      builder: (context) => const LoginPage(),
                                     ));
                               },
                               child: const Icon(

@@ -1,0 +1,245 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:neel_test/Images/app_images.dart';
+import 'package:neel_test/modelview.dart';
+
+class ProductInfo extends StatefulWidget {
+  const ProductInfo({super.key});
+
+  @override
+  State<ProductInfo> createState() => _ProductInfoState();
+}
+
+class _ProductInfoState extends State<ProductInfo> {
+  int activeIndex = 0;
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: const Text(
+          "Detail Profuct",
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
+        ),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 8),
+            child: Icon(
+              Icons.shopping_cart,
+              color: Colors.black,
+            ),
+          ),
+        ],
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back_outlined,
+            color: Colors.black,
+          ),
+        ),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: size.height / 2.2,
+              width: size.width,
+              decoration:  BoxDecoration(
+                  image: DecorationImage(image: NetworkImage(ProductModelView[activeIndex].image),)
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 8,
+                  ),
+                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 320,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(ProductModelView[activeIndex].title,style: GoogleFonts.roboto(fontSize: 18),),
+                            SizedBox(height: 5,),
+                            Text(ProductModelView[activeIndex].prize,style: GoogleFonts.roboto(fontSize: 16,fontWeight: FontWeight.bold),),
+                          ],
+                        ),
+                      ),
+                      const CircleAvatar(
+                        backgroundColor: Color(0xffC7C7C7),
+                        child: Icon(
+                          Icons.favorite_border,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Choose the colour",
+                        style: TextStyle(
+                            color: Color(0xffC7C7C7), fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(
+                        height: 6,
+                      ),
+                      SizedBox(
+                        height: 60,
+                        child: ListView.builder(
+                          itemCount: ProductModelView.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return InkWell(
+                              onTap: () {
+                                activeIndex=index;
+                                setState(() {});
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(right: 6),
+                                height: 68,
+                                width: 68,
+                                decoration: BoxDecoration(
+                                    color: Colors.white54,
+                                    image: DecorationImage(image: NetworkImage(ProductModelView[index].image),),
+                                    borderRadius: BorderRadius.all(Radius.circular(12))
+                                ),
+                              ),
+                            );
+                          },),
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  const Divider(
+                    color: Colors.black45,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(left: 12),
+                            child: CircleAvatar(
+                              radius: 30,
+                              backgroundImage: NetworkImage(ProductImages.image2),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 18,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Apple Store",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700,color:Colors.black, fontSize: 18),
+                              ),
+                              Text(
+                                "online 12m ago",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w500,color:Color(0xffC7C7C7), fontSize: 12),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                      ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor:
+                              MaterialStateProperty.all(Colors.black)),
+                          onPressed: () {},
+                          child: const Text(
+                            "Follow",
+                            style: TextStyle(color: Colors.white),
+                          )),
+                    ],
+                  ),
+                  const Divider(
+                    color: Colors.black,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Description of product",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                        style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400),
+                        maxLines: 5,
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    color: Colors.white,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                          style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(3),
+                              minimumSize: MaterialStateProperty.all(Size(70, 45)),
+                              backgroundColor:
+                              MaterialStateProperty.all(Colors.white)),
+                          onPressed: () {},
+                          child: const Text(
+                            "Add to Cart",
+                            style: TextStyle(color: Colors.black),
+                          )),
+                      const SizedBox(width: 50,),
+                      ElevatedButton(
+                          style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(3),
+                              minimumSize: MaterialStateProperty.all(Size(90, 45)),
+                              ),
+                          onPressed: () {},
+                          child: const Text(
+                            "Buy Now",
+                            style: TextStyle(color: Colors.white),
+                          )),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

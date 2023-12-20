@@ -22,38 +22,38 @@ class _WelcomePageState extends State<WelcomePage> {
         child: SafeArea(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 65,
               ),
-              Text(
+              const Text(
                 "Welcome to Trendify",
                 style: TextStyle(
                     fontSize: 24,
                     color: Colors.black,
                     fontWeight: FontWeight.w600),
               ),
-              Text(
+              const Text(
                 "Explore us",
                 style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 18,
                     color: Colors.black45),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 65,
               ),
               Container(
                 height: 380,
                 width: size.width / 1.2,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.black,
                   image: DecorationImage(image: NetworkImage(BackgroudImg.wlcmimg),fit: BoxFit.cover)
                 ),
               ),
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
               ElevatedButton(onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage(),));
-              }, child: Text("Log in"),style: ButtonStyle(
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage(),));
+              },style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
                       Colors.blueAccent),
                   elevation: MaterialStateProperty.all(2),
@@ -65,11 +65,11 @@ class _WelcomePageState extends State<WelcomePage> {
                   shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
                           borderRadius:
-                          BorderRadius.circular(24)))),),
-              SizedBox(height: 8,),
+                          BorderRadius.circular(24)))), child: const Text("Log in"),),
+              const SizedBox(height: 8,),
               ElevatedButton(onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignupPage(),));
-              }, child: Text("Sign Up",style: TextStyle(color: Colors.white),),style: ButtonStyle(
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const SignupPage(),));
+              },style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
                       Colors.black54),
                   elevation: MaterialStateProperty.all(1),
@@ -81,7 +81,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
                           borderRadius:
-                          BorderRadius.circular(24)))),),
+                          BorderRadius.circular(24)))), child: const Text("Sign Up",style: TextStyle(color: Colors.white),),),
             ],
           ),
         ),
